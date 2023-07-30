@@ -14,7 +14,7 @@ const Get = (node: IFormulaNode, context: ExecutionContext) => {
             context.setError(EFormulaErrorCode.VALUE, 'GET function takes only number argument');
             return NaN;
         }
-        return onCallee[index - 1];
+        return onCallee[index];
     }
     const array: any = resolveValue(<IFormulaObject>context.get(args[0]));
     const index = <number>resolveValue(<IFormulaObject>context.get(args[1]));
@@ -30,7 +30,7 @@ const Get = (node: IFormulaNode, context: ExecutionContext) => {
         context.setError(EFormulaErrorCode.VALUE, 'GET function second argument(index) must be a number');
         return NaN;
     }
-    return array[index - 1];
+    return array[index];
 };
 
 const Range = (node: IFormulaNode, context: ExecutionContext) => {
@@ -54,7 +54,7 @@ const Range = (node: IFormulaNode, context: ExecutionContext) => {
         context.setError(EFormulaErrorCode.VALUE, 'RANGE function takes only number argument on array');
         return NaN;
     }
-    return onCallee.slice(<number>from - 1, <number>to);
+    return onCallee.slice(<number>from, <number>to);
 
 };
 
@@ -86,7 +86,7 @@ const IndexOf = (node: IFormulaNode, context: ExecutionContext) => {
         context.setError(EFormulaErrorCode.VALUE, 'INDEXOF function takes only array as first argument');
         return NaN;
     }
-    return array.indexOf(value) + 1;
+    return array.indexOf(value);
 };
 
 export default { Get, Range, Sort, SortDesc, IndexOf };

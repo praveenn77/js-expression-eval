@@ -43,9 +43,10 @@ export const getArgumentValues = (node: IFormulaNode, context: ExecutionContext)
 };
 
 export const resolveValue = (arg: IFormulaObject): number | string | boolean => {
-    let value = arg;
-   
-    return <number>value;
+    if (typeof arg === 'function') {
+        return  <number>arg();
+    }
+    return <number>arg;
 };
 
 export const isValidNumber = (value) => {

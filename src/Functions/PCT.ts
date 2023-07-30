@@ -6,9 +6,7 @@ export class PCTObject {
     constructor(value: number) {
         this.value = value / 100;
     }
-    public getValue() {
-        return this;
-    }
+    
     public evaluate(value1: number, operator: string) {
         if (operator === '+') {
             return value1 * (1 + this.value);

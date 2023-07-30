@@ -1,6 +1,5 @@
 import { IFormulaNode } from '../types/Formula.types';
 import ExecutionContext from '../ExecutionContext';
-import BaseObject from '../Objects/BaseObject';
 /**
  * Evaluate the member expression and put the value in the context for that respective node
  *
@@ -16,8 +15,9 @@ const MemberExpression = (node: IFormulaNode, context: ExecutionContext) => {
     const property = node.property.type === 'Identifier' ? node.property.name : <string>context.get(node.property);
     // Check the type of the object and perform the respective operation
     switch (true) {
-        case typeof object === 'object' && typeof (<BaseObject>object).getValue === 'function':
-            context.put(node, (<BaseObject>object).getValue(property));
+
+        case typeof object === 'function':
+            context.put(node, object(property));
             break;
 
         case typeof object[property] === 'function':
