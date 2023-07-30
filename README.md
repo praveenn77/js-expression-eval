@@ -87,6 +87,27 @@ By default the parser has list predefined functions.
 5. [Logical Functions](docs/LogicalFunctions.md)
 
 
+
+## Util functions
+
+### getAllFunctionNames
+This function returns all the function names that are used in the given expression.
+
+```javascript
+const parser = new ExpressionParser('SUM(A, B) + AVERAGE(C, D)');
+const functionNames = parser.getAllFunctionNames();
+console.log(functionNames); // ['SUM', 'AVERAGE']
+```
+
+### getAllIdentifiers
+This function returns all the variable names that are used in the given expression.
+
+```javascript
+const parser = new ExpressionParser('A + B');
+const identifiers = parser.getAllIdentifiers();
+console.log(identifiers); // ['A', 'B']
+```
+
 ## New function request
 If you want to add a new function to the parser, please create a new issue with the function name and the function description. We will add the function to the parser as soon as possible.
 
