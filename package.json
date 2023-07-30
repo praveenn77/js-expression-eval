@@ -1,0 +1,30 @@
+{
+  "name": "js-expression-eval",
+  "version": "1.0.0",
+  "description": "JS expression evaluation package",
+  "repository": "https://github.com/praveenn77/js-expression-eval.git",
+  "author": "Praveen N <npu@live.in>",
+  "license": "MIT",
+  "source": "src/Formula.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "acorn": "^8.10.0",
+    "acorn-walk": "^8.2.0"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "2.9.3",
+    "@parcel/transformer-typescript-types": "2.9.3",
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.2",
+    "parcel": "^2.9.3",
+    "ts-jest": "^29.1.1",
+    "typescript": ">=3.0.0"
+  }
+}

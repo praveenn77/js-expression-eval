@@ -1,0 +1,8 @@
+{
+    "include": ["src/**/*"],
+    "compilerOptions": {
+       "strictNullChecks": false,
+       "lib": ["es2016"],
+       "esModuleInterop": true
+    }
+  }
