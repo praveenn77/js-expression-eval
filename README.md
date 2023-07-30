@@ -18,18 +18,25 @@ npm install js-expression-eval
 
 ## Usage
 
+## Import
+
+```javascript
+import jsExpressionEval from 'js-expression-eval';
+const { ExpressionParser } = jsExpressionEval;
+```
+
 ## Syntax
 
 ```javascript
-import ExpressionParser from 'js-expression-eval';
-const parser = new ExpressionParser(expression, variables?);
+const parser = new ExpressionParser(expression:string, variables);
 const result = parser.evaluate();
 ```
 
 ### Basic arithmetic operations
 
 ```javascript
-import ExpressionParser from 'js-expression-eval';
+import jsExpressionEval from 'js-expression-eval';
+const { ExpressionParser } = jsExpressionEval;
 const parser = new ExpressionParser('2 + 3');
 const result = parser.evaluate();
 console.log(result); // 5
@@ -38,7 +45,6 @@ console.log(result); // 5
 ### Variables
 
 ```javascript
-import ExpressionParser from 'js-expression-eval';
 const parser = new ExpressionParser('x + y.z', { x: 2, y: { z: 3 } });
 const result = parser.evaluate();
 console.log(result); // 5
@@ -47,7 +53,6 @@ console.log(result); // 5
 ### Functions
 
 ```javascript
-import ExpressionParser from 'js-expression-eval';
 const parser = new ExpressionParser('A + B', { A: 2, B: () => 3 });
 const result = parser.evaluate();
 console.log(result); // 5
@@ -56,7 +61,6 @@ console.log(result); // 5
 ### Function with method chaining
 
 ```javascript
-import ExpressionParser from 'js-expression-eval';
 const parser = new ExpressionParser('A.B + A.C' ,
 { 
     A: (identifier) => {

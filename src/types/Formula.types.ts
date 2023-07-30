@@ -1,5 +1,9 @@
 import ExecutionContext from "../ExecutionContext";
 
+
+export interface IVariableContext {
+    [key: string]: IVariableContext | IFormulaObject ;
+}
 export interface IFormulaNode extends acorn.Node {
     name: string;
     body: IFormulaNode[];
@@ -25,8 +29,7 @@ export type IFormulaObject =
     | number
     | boolean
     | ((...args: any) => IFormulaObject)
-    | string[]
-    | Date;
+    | string[];
 
 export interface ICallExpressionFunctions {
     [key: string]: (node: any, context: ExecutionContext) => string | boolean | number;

@@ -1,8 +1,8 @@
-import Formula from "../Formula";
+import  { ExpressionParser }  from "../ExpressionParser";
 
 describe("Simple", () => {
     it("1+1 = 2", () => {
-        const formula = new Formula("1 + 1");
+        const formula = new ExpressionParser("1 + 1");
         expect(formula.evaluate()).toBe(2);
     });
 });
@@ -10,11 +10,11 @@ describe("Simple", () => {
 
 describe("Simple Object", () => {
     it("one level json", () => {
-        const formula = new Formula("A",{ A : 10});
+        const formula = new ExpressionParser("A",{ A : 10});
         expect(formula.evaluate()).toBe(10);
     });
     it("two level json", () => {
-        const formula = new Formula("A.B",{ A : { B : 10}});
+        const formula = new ExpressionParser("A.B",{ A : { B : 10}});
         expect(formula.evaluate()).toBe(10);
     });
 });
@@ -22,18 +22,18 @@ describe("Simple Object", () => {
 
 describe("Object with function", () => {
     it("one level json", () => {
-        const formula = new Formula("A + 20",{ A : () => 10});
+        const formula = new ExpressionParser("A + 20",{ A : () => 10});
         expect(formula.evaluate()).toBe(30);
     });
     it("two level json", () => {
-        const formula = new Formula("A.B",{ A : { B : () => 10}});
+        const formula = new ExpressionParser("A.B",{ A : { B : () => 10}});
         expect(formula.evaluate()).toBe(10);
     });
 });
 
 describe("Member expression function", () => {
     it("one level json", () => {
-        const formula = new Formula("A.B + A.C",{ A : (identifier) => {
+        const formula = new ExpressionParser("A.B + A.C",{ A : (identifier) => {
             switch(identifier){
                 case "B" : return 10;
                 case "C" : return 20;

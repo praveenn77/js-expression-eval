@@ -1,11 +1,11 @@
 {
   "name": "js-expression-eval",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "JS expression evaluation package",
   "repository": "https://github.com/praveenn77/js-expression-eval.git",
   "author": "Praveen N <npu@live.in>",
   "license": "MIT",
-  "source": "src/Formula.ts",
+  "source": "src/ExpressionParser.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",

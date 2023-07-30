@@ -3,7 +3,7 @@ import * as walk from 'acorn-walk';
 import ExecutionContext from './ExecutionContext';
 import { replaceInlineScaling, resolveValue } from './Utils';
 import Visitors from './Visitors';
-import { IFormulaNode } from './types/Formula.types';
+import { IFormulaNode, IVariableContext } from './types/Formula.types';
 import { getCalleeName } from './Visitors/CallExpression';
 
 /**
@@ -11,7 +11,7 @@ import { getCalleeName } from './Visitors/CallExpression';
  * @description Scripts Formula class
  * @author Praveen N
  */
-class Formula {
+export  class ExpressionParser {
     private formulaAST: acorn.Node;
 
     private exeContext: ExecutionContext;
@@ -22,7 +22,7 @@ class Formula {
      * @param {ExecutionContext} context
      * @memberof Formula
      */
-    constructor(formula: string, variables: { [key: string]: any } = {}) {
+    constructor(formula: string, variables: IVariableContext = {}) {
         const processedFormula =  replaceInlineScaling(formula);
         this.formulaAST = acorn.parse(processedFormula, { ecmaVersion: 3 });
         this.exeContext =  new ExecutionContext(variables) ;
@@ -71,5 +71,3 @@ class Formula {
         return this.exeContext.getError();
     }
 }
-
-export default Formula;
